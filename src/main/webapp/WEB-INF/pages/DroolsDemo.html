@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <TITLE>Drools Demo</TITLE>
+    <meta charset="UTF-8">
+    <title>test file</title>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-flex.css" />
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="./bower_components/bootstrap-material-design/dist/bootstrap-material-design.css" />
+    <script  src="./bower_components/jquery/dist/jquery.js" > </script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+    <script>
+
+        $(document).ready(function() {
+            $.ajax({
+                url: "http://localhost:8888/testModel"
+            }).then(function(data) {
+                $('')
+                $('.greeting-name').append(data.name);
+                $('.greeting-age').append(data.age);
+                $('.greeting-id').append(data.id);
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div>
+    <p class="greeting-name">The name is </p>
+
+</div>
+</body>
+</html>

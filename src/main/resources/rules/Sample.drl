@@ -1,0 +1,42 @@
+package com.rulesapp
+ 
+//import com.sample.DroolsTest.Message
+import com.rulesapp.DroolsTest;
+import com.rulesapp.DroolsTest.Message;
+ 
+rule "Hello World"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMessage( "Goodbye cruel world" );
+        m.setStatus( DroolsTest.Message.GOODBYE );
+        update( m );
+end
+
+rule "GoodBye"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+rule "GreaterThanRule"
+	when
+		Message(status >= Message.ANOTHER,myStatus : status, myComparator : Message.ANOTHER)
+	then
+//		System.out.println( " message "+myStatus+" greater than: "+myComparator);
+		Message.setOutput(myStatus+" greater than: "+myComparator);
+		//System.out.println(this.
+		// see if we can know which rule was fired and why.******
+		//object.sendMessage().
+end
+
+rule "LesserThanRule"
+	when 
+		Message(status < Message.ANOTHER,myStatus : status, myComparator : Message.ANOTHER)
+	then
+//		System.out.println( " message "+myStatus+" lesser than: "+myComparator);
+		Message.setOutput(myStatus+" lesser than: "+myComparator);
+end
+
